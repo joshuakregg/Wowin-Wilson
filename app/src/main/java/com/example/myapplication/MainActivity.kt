@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.content.ClipData
+import android.content.Intent
 import android.media.MediaDataSource
 import android.media.MediaPlayer
 import java.nio.file.Path
@@ -86,23 +87,10 @@ class MainActivity : AppCompatActivity() {
         adapter.setOnItemClickListener(object : ItemAdapter.onItemClickListener{
 
             override fun onItemClick(position: Int) {
-                fun playAudio(path: Int) {
-                    var mediaPlayer = MediaPlayer.create(this@MainActivity, path)
-                    mediaPlayer.start()
-
-                }
-                when(position) {
-                    0 -> playAudio(R.raw.wowa)
-                    1 ->  playAudio(R.raw.wowb)
-                    2 ->  playAudio(R.raw.wowc)
-                    3 ->  playAudio(R.raw.wowd)
-                    4 ->  playAudio(R.raw.wowe)
-                    5 ->  playAudio(R.raw.wowf)
-                    6 ->  playAudio(R.raw.wowg)
-                    7 ->  playAudio(R.raw.wowq)
-                    8 ->  playAudio(R.raw.wowv)
-                    9 ->  playAudio(R.raw.wowy)
-                }
+               // val context = layoutInflater.inflate(R.layout.button_boi,findViewById(R.id.button_booty),false)
+                val intent= Intent(this@MainActivity, ButtonBoiActivity::class.java)
+                intent.putExtra(ButtonBoiActivity.POS,position.toString())
+                this@MainActivity.startActivity(intent)
 
 
             }
